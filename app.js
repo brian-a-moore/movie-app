@@ -2,21 +2,17 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3001;
+const port = 3001;
 const morgan = require('morgan');
 
 // Application
-app.listen(port, () => console.log(`-- ONLINE: Port: [${port}], Environment: [${process.env.NODE_ENV}] --`));
+app.listen(port, () => console.log(`-- ONLINE: Port: [${port}] --`));
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('build'));
-
-// Dev Route Logging
-if(process.env.NODE_ENV === 'dev') {
-    app.use(morgan('dev'));
-}
+app.use(morgan('tiny'));
 
 // Api Routes
 app.use('/api', require('./api'));

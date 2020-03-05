@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "init": "npm install; cd client; npm install; npm run build; cp -R build ../; rm -rf build; cd ../; node ."
   },
   "author": "Brian A. Moore",
   "license": "ISC",
